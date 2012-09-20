@@ -9,9 +9,11 @@
 #include "uuid.h"
 
 class Database {
-	std::shared_ptr<DataSource> source;
-	std::unordered_map<UUID,std::pair<bool,std::shared_ptr<Batch>>> batches;
-
+	private:
+		DataSourceRef source;
+		std::unordered_map<UUID,std::pair<bool,std::shared_ptr<Batch>>> batches;
+	public:
+		void setDataSource(DataSourceRef sourceref);
 };
 
 #endif
