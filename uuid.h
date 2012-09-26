@@ -11,6 +11,14 @@ class UUID {
 		UUID();
 		bool operator==(const UUID &other) const;
 		friend std::ostream& operator<<(std::ostream &stream, const UUID& id);
+		friend class std::hash<UUID>;
 };
 
+namespace std {
+    template <>
+        class hash<UUID>{
+        public :
+            size_t operator()(const UUID &id ) const;
+    };
+};
 #endif

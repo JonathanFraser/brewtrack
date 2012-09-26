@@ -1,10 +1,10 @@
 #include "batch.h"
 
-std::string& Batch::getName() {
+const std::string& Batch::getName() {
 	return name;
 }
 
-std::string& Batch::getDescription() {
+const std::string& Batch::getDescription() {
 	return description;
 }
 

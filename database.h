@@ -11,8 +11,9 @@
 class Database {
 	private:
 		DataSourceRef source;
-		std::unordered_map<UUID,std::pair<bool,std::shared_ptr<Batch>>> batches;
+		std::unordered_map<UUID,BatchRef> batches;
 	public:
+		void addBatch(BatchRef);
 		void setDataSource(DataSourceRef sourceref);
 };
 

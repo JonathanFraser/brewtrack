@@ -36,3 +36,13 @@ std::ostream& operator<<(std::ostream &stream,const UUID& id) {
 	stream << std::dec;
 	return stream;
 }
+
+namespace std {
+	size_t hash<UUID>::operator()(const UUID &id ) const {
+		size_t hash;
+		for(int i=0;i<4;i++) {
+			hash =  hash ^ (id.id[i] << (sizeof(size_t) - (i+1)*sizeof(uint32_t))*8);
+		}
+		return hash;
+	}
+};
