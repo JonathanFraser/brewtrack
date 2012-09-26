@@ -1,2 +1,4 @@
 testfile.dat
-
+*.d
+*.o
+brewtrack
