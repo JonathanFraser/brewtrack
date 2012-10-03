@@ -1,4 +1,5 @@
 testfile.dat
 *.d
 *.o
+.*.swp
 brewtrack

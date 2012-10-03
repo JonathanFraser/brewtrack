@@ -1,12 +1,12 @@
 #ifndef SQL_LITE_SOURCE_H_
 #define SQL_LITE_SOURCE_H_
 
-#include "datasource.h"
 #include <string>
+#include "batch.h"
 
 class sqlite3;
 
-class SQLiteSource : public DataSource {
+class SQLiteSource{
 	public:
 		SQLiteSource(std::string filename);
 		~SQLiteSource();
