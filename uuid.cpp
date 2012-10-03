@@ -19,6 +19,12 @@ UUID::UUID() {
 	id[1] = ((id[1]&0x3FFFFFFF)|0x80000000);
 }
 
+UUID::UUID(const UUID &other) {
+	for(uint8_t i=0;i<4;i++) {
+		id[i] = other.id[i];
+	}
+}
+
 bool UUID::operator==(const UUID& other) const{
 	bool ret_val = true;
 	for(int i=0;i<4;i++) {
@@ -39,9 +45,12 @@ std::ostream& operator<<(std::ostream &stream,const UUID& id) {
 
 namespace std {
 	size_t hash<UUID>::operator()(const UUID &id ) const {
-		size_t hash;
+		size_t hash=0;
+		const int SIZE_T_MAX = sizeof(size_t)*8;
+		const int increment = SIZE_T_MAX/4;
+
 		for(int i=0;i<4;i++) {
-			hash =  hash ^ (id.id[i] << (sizeof(size_t) - (i+1)*sizeof(uint32_t))*8);
+			hash =  hash ^ (id.id[i] << (increment*i - sizeof(uint32_t))*8);
 		}
 		return hash;
 	}

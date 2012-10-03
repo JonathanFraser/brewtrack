@@ -9,6 +9,7 @@ class UUID {
 		uint32_t id[4];
 	public:
 		UUID();
+		UUID(const UUID &id);
 		bool operator==(const UUID &other) const;
 		friend std::ostream& operator<<(std::ostream &stream, const UUID& id);
 		friend class std::hash<UUID>;
