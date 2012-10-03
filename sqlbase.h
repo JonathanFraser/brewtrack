@@ -8,7 +8,7 @@ class SQLBase : public Database {
 		BatchRef getBatchByID(const UUID &id);
 	protected:
 		virtual void initDB() =0;
-		virtual void executeSQL(const std::string &statment) =0;
+		virtual void executeQuery(const std::string &statment) =0;
 };
 
 #endif
