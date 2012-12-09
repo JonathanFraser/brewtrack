@@ -2,9 +2,9 @@ SOURCES := $(wildcard *.cpp)
 OBJECTS := $(patsubst %.cpp,%.o,$(SOURCES))
 DEPENDS := $(patsubst %.cpp,%.d,$(SOURCES))
 
-override LIBRARIES := sqlite3  #libudev gtkmm-3.0
+override LIBRARIES := #libudev gtkmm-3.0
 override CXXFLAGS := -g -Wall --std=gnu++0x $(shell pkg-config --cflags $(LIBRARIES)) $(CXXFLAGS)
-override LDFLAGS := --std=gnu++11 $(shell pkg-config --libs $(LIBRARIES) )$(LDFLAGS)
+override LDFLAGS := --std=gnu++11 -ltntdb $(shell pkg-config --libs $(LIBRARIES) )$(LDFLAGS)
 override LIBS := $(LIBS)
 
 TARGET := brewtrack

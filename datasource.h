@@ -7,6 +7,8 @@
 class DataSource {
 	public:
 		virtual BatchRef getBatchByID(const UUID &id) = 0;
+	protected:
+		void setBatchUUID(BatchRef, const UUID &id);
 };
 
 #endif

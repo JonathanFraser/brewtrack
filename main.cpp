@@ -1,6 +1,7 @@
 #include <iostream>
 #include "datamodel.h"
 #include "memorybase.h"
+#include "sqlbase.h"
 
 using namespace std;
 
@@ -9,10 +10,12 @@ BatchRef batch1 = std::make_shared<Batch>();
 batch1->setName("Happy Days");
 batch1->setDescription("Some Test Statement");
 DataModel model;
-model.setPrimaryDatabase(std::make_shared<MemoryBase>());
+//model.setPrimaryDatabase(std::make_shared<MemoryBase>());
+model.setPrimaryDatabase(std::make_shared<SQLBase>("sqlite:running.db"));
 model.addBatch(batch1);
 auto batch2 = model.getBatchByID(batch1->getUUID());
 std::cout << batch2->getName() << std::endl;
 std::cout << batch2->getDescription() << std::endl;
+SQLBase base("sqlite:mytest.db");
 return 0;
 }

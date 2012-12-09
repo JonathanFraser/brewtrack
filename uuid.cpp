@@ -1,5 +1,6 @@
 #include "uuid.h"
 #include <ctime>
+#include <cassert>
 
 namespace {
 	std::uniform_int_distribution<int> distribution(0,std::numeric_limits<uint32_t>::max());
@@ -31,6 +32,11 @@ bool UUID::operator==(const UUID& other) const{
 		ret_val &= (other.id[i] == id[i]);
 	}
 	return ret_val;
+}
+
+uint32_t UUID::get(size_t i) const {
+	assert(i<4);
+	return id[i];
 }
 
 std::ostream& operator<<(std::ostream &stream,const UUID& id) {

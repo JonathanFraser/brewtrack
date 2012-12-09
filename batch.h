@@ -16,9 +16,12 @@ class Batch : public Saveable {
 		void setDescription(const std::string& desc);
 		UUID getUUID() const;
 	private:
+		void setUUID(const UUID &id);
 		UUID id;
 		std::string name;
 		std::string description;
+
+		friend class DataSource;
 };
 
 typedef std::shared_ptr<Batch> BatchRef;

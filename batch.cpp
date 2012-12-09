@@ -25,3 +25,7 @@ void Batch::setDescription(const std::string &text) {
 UUID Batch::getUUID() const {
 	return id;
 }
+
+void Batch::setUUID(const UUID &uuid) {
+	id = uuid;
+}

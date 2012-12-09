@@ -11,6 +11,7 @@ class UUID {
 		UUID();
 		UUID(const UUID &id);
 		bool operator==(const UUID &other) const;
+		uint32_t get(size_t i) const;
 		friend std::ostream& operator<<(std::ostream &stream, const UUID& id);
 		friend class std::hash<UUID>;
 };
