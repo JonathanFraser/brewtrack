@@ -1,21 +1,19 @@
 #include "uuid.h"
-#include <ctime>
+#include "randomword.h"
 #include <cassert>
 
+const UUID nullconstant;
+
 namespace {
-	std::uniform_int_distribution<int> distribution(0,std::numeric_limits<uint32_t>::max());
-	std::mt19937 engine; // Mersenne twister MT19937
-	bool is_inited=false;
+	RandomWord wordgen;
 };
 
 UUID::UUID() {
-	if(!is_inited) {
-		engine.seed(std::time(NULL));
-		is_inited=true;
-	}
+
 	for(int i=0;i<4;i++) {
-		id[i] = distribution(engine);
+		id[i] = wordgen();
 	}
+
 	id[2] = ((id[2]&0xFFFF0FFF)|0x00004000);
 	id[1] = ((id[1]&0x3FFFFFFF)|0x80000000);
 }

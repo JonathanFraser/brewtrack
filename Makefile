@@ -4,7 +4,7 @@ DEPENDS := $(patsubst %.cpp,%.d,$(SOURCES))
 
 override LIBRARIES := #libudev gtkmm-3.0
 override CXXFLAGS := -g -Wall --std=gnu++0x $(shell pkg-config --cflags $(LIBRARIES)) $(CXXFLAGS)
-override LDFLAGS := --std=gnu++11 -ltntdb $(shell pkg-config --libs $(LIBRARIES) )$(LDFLAGS)
+override LDFLAGS := -g --std=gnu++0x -ltntdb $(shell pkg-config --libs $(LIBRARIES) )$(LDFLAGS)
 override LIBS := $(LIBS)
 
 TARGET := brewtrack

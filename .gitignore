@@ -1,4 +1,5 @@
 testfile.dat
+*.db
 *.d
 *.o
 .*.swp
