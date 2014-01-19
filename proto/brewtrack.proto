@@ -1,0 +1,5 @@
+import "uuid.proto";
+
+message Brewtrack {
+	optional uuid id = 1;
+}

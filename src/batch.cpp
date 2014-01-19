@@ -15,30 +15,19 @@ time_t Batch::getTimestamp() const {
 	return timestamp;
 }
 
-UUID Batch::getRecipeUUID() const {
-	return recipe_id;
-}
-
-UUID Batch::getUUID() const {
-	return id;
+RecipeRef Batch::getRecipe() const {
+	return recipe;
 }
 
 
 void Batch::setName(const std::string &text) {
-	if(text != name) {
-		isSaved=false;
 		name = text;
-	}
 }
 
 void Batch::setDescription(const std::string &text) {
-	if(text != description) {
-		isSaved=false;
 		description = text;
-	}
 }
 
-
-void Batch::setUUID(const UUID &uuid) {
-	id = uuid;
+UUID Batch::getUUID() {
+	return id;
 }

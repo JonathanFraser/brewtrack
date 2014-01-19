@@ -1,0 +1,6 @@
+message uuid {
+	required uint32 id1 = 1;
+	required uint32 id2 = 2;
+	required uint32 id3 = 3;
+	required uint32 id4 = 4;
+}
