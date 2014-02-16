@@ -7,8 +7,7 @@
 class DataModel {
 	public:
 		void setPrimaryDatabase(DatabaseRef database);
-		void addBatch(BatchRef);
-		BatchRef getBatchByID(const UUID &);
+		
 	private:
 		DatabaseRef primary_database;
 };

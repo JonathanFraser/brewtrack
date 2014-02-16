@@ -2,33 +2,23 @@
 #define BATCH_H
 
 #include "uuid.h"
+#include "storable.h"
 #include "recipe.h"
-#include <ctime>
 #include <string>
 #include <memory>
 
 
-class Batch {
+class Batch : public Storable {
 	public:
-		Batch();
+		Batch(const UUID&, DataSourceRef);
+		Batch(const Recipe& recipe);
 		const std::string& getName() const;
 		const std::string& getDescription() const;
-		time_t getTimestamp() const;
-		RecipeRef getRecipe() const;
 		
 		void setName(const std::string& name);
 		void setDescription(const std::string& desc);
-		UUID getUUID();
-
-	private:
-		UUID id;
-		RecipeRef recipe;
-		time_t timestamp;
-		std::string name;
-		std::string description;
 
 };
 
-typedef std::shared_ptr<Batch> BatchRef;
 
 #endif

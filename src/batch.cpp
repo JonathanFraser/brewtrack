@@ -1,33 +1,27 @@
 #include "batch.h"
 
-Batch::Batch() : timestamp(time(0)) {
+const std::string BATCH_TYPE = "BATCH";
+const std::string RECIPE_ID = "RECIPE ID";
+const std::string DESC = "DESCRIPTION";
+const std::string NAME = "NAME";
+
+Batch::Batch(const Recipe &recipe) : Storable(recipe.getSink(),BATCH_TYPE){
+	stashID(RECIPE_ID,recipe.getUUID());
 }
 
 const std::string& Batch::getName() const {
-	return name;
+	return retrieveString(NAME);
 }
 
 const std::string& Batch::getDescription() const {
-	return description;
-}
-
-time_t Batch::getTimestamp() const {
-	return timestamp;
-}
-
-RecipeRef Batch::getRecipe() const {
-	return recipe;
+	return retrieveString(DESC);
 }
 
 
 void Batch::setName(const std::string &text) {
-		name = text;
+ stashString(NAME,text);
 }
 
 void Batch::setDescription(const std::string &text) {
-		description = text;
-}
-
-UUID Batch::getUUID() {
-	return id;
+	stashString(DESC,text);
 }
